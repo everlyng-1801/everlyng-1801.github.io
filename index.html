@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Inventario</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
   <h1>Inventario</h1>
@@ -13,9 +13,18 @@
     </select></br>
     <input type="text" id="add-category-input">
     <button id="add-category-btn">Agregar categoría</button>
-  </div>
+  </div></br>
+  
+  
+  <button id="add-row-btn">Agregar fila</button>
+  <button id="add-column-btn">Agregar columna</button>
+  <button id="calculate-btn">Calcular</button>
+  <button id="export-btn">Exportar a Excel</button>
+  <button id="download-pdf-btn">Descargar como PDF</button>
 
-  <table id="inventory-table">
+  </br></br>
+
+<table id="inventory-table">
     <thead>
       <tr>
         <th></th>
@@ -39,13 +48,10 @@
     </tfoot>
   </table>
 
-  <button id="add-row-btn">Agregar fila</button>
-  <button id="add-column-btn">Agregar columna</button>
-  <button id="calculate-btn">Calcular</button>
-  <button id="export-btn">Exportar a Excel</button>
-
   <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
   <script src="https://unpkg.com/file-saver/dist/FileSaver.min.js"></script>
-  <script src="js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.3/jspdf.umd.min.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>

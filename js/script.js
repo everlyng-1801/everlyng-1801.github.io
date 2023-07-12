@@ -9,7 +9,7 @@ const totalPrice = document.getElementById('total-price');
 const addCategoryBtn = document.getElementById('add-category-btn');
 const calculateBtn = document.getElementById('calculate-btn');
 const exportBtn = document.getElementById('export-btn');
-const deleteColumnBtn = document.getElementById('delete-column-btn');
+const downloadPdfBtn = document.getElementById('download-pdf-btn');
 
 // Opciones de categoría disponibles
 const categories = [];
@@ -64,45 +64,58 @@ addColumnBtn.addEventListener('click', () => {
       newCell.className = 'numeric-field';
       row.appendChild(newCell);
     });
-
-    const categorySelects = inventoryTable.querySelectorAll('.category-select');
-    categorySelects.forEach((select) => {
-      const defaultOption = document.createElement('option');
-      defaultOption.value = '';
-      defaultOption.textContent = 'Sin categoría';
-      select.appendChild(defaultOption);
-    });
   }
 });
 
-// Eliminar columna al hacer clic en el botón "Eliminar columna"
-deleteColumnBtn.addEventListener('click', () => {
-  const columnName = prompt('Ingrese el nombre de la columna a eliminar:');
-  if (columnName) {
-    const headerRow = inventoryTable.querySelector('thead tr');
-    const headerCells = headerRow.querySelectorAll('th');
-    let columnIndex = -1;
-    headerCells.forEach((cell, index) => {
-      if (cell.textContent === columnName) {
-        columnIndex = index;
+// Eliminar columna
+function deleteColumn(button) {
+  const headerCell = button.parentNode;
+  const columnIndex = Array.from(headerCell.parentNode.children).indexOf(headerCell);
+
+  const headerRow = inventoryTable.querySelector('thead tr');
+  const cells = headerRow.querySelectorAll('th');
+  const rows = inventoryTable.querySelectorAll('tbody tr');
+
+  cells.forEach((cell) => {
+    if (cell === headerCell) {
+      cell.remove();
+    }
+  });
+
+  rows.forEach((row) => {
+    const cells = row.querySelectorAll('td');
+    cells.forEach((cell) => {
+      if (cell === cells[columnIndex]) {
+        cell.remove();
       }
     });
+  });
 
-    if (columnIndex === -1) {
-      alert('La columna especificada no existe.');
-      return;
-    }
+  updateTotals();
+}
 
-    const rows = inventoryTable.querySelectorAll('tbody tr');
-    rows.forEach((row) => {
-      const cells = row.querySelectorAll('td');
-      cells[columnIndex].remove();
+// Eliminar celda
+function deleteCell(button) {
+  const cell = button.parentNode.parentNode;
+  const cellIndex = Array.from(cell.parentNode.children).indexOf(cell);
+
+  const headerRow = inventoryTable.querySelector('thead tr');
+  const headerCell = headerRow.children[cellIndex];
+
+  const rows = inventoryTable.querySelectorAll('tbody tr');
+  rows.forEach((row) => {
+    const cells = row.querySelectorAll('td');
+    cells.forEach((cell) => {
+      if (cell === cells[cellIndex]) {
+        cell.remove();
+      }
     });
+  });
 
-    headerCells[columnIndex].remove();
-    updateTotals();
-  }
-});
+  headerCell.remove();
+
+  updateTotals();
+}
 
 // Agregar categoría al hacer clic en el botón "Agregar categoría"
 addCategoryBtn.addEventListener('click', () => {
@@ -116,10 +129,12 @@ addCategoryBtn.addEventListener('click', () => {
 
     const categorySelects = document.querySelectorAll('.category-select');
     categorySelects.forEach((select) => {
-      select.appendChild(categoryOption.cloneNode(true));
+      const cloneOption = categoryOption.cloneNode(true);
+      select.appendChild(cloneOption);
     });
 
     addCategoryInput.value = '';
+    populateCategoryFilter();
   }
 });
 
@@ -150,6 +165,11 @@ exportBtn.addEventListener('click', () => {
   exportToExcel();
 });
 
+// Descargar la tabla como PDF
+downloadPdfBtn.addEventListener('click', () => {
+  downloadAsPDF();
+});
+
 // Actualizar los totales de cantidades y precios
 function updateTotals() {
   const rows = inventoryTable.querySelectorAll('tbody tr');
@@ -173,6 +193,8 @@ function updateTotals() {
 function populateCategoryOptions() {
   const categorySelects = document.querySelectorAll('.category-select');
   categorySelects.forEach((select) => {
+    const selectedCategory = select.value;
+
     select.innerHTML = '';
     const defaultOption = document.createElement('option');
     defaultOption.value = '';
@@ -185,7 +207,30 @@ function populateCategoryOptions() {
       option.textContent = category;
       select.appendChild(option);
     });
+
+    select.value = selectedCategory;
   });
+}
+
+// Generar opciones de categoría en el filtro de categoría
+function populateCategoryFilter() {
+  const categoryFilter = document.getElementById('category-filter');
+  const selectedCategory = categoryFilter.value;
+
+  categoryFilter.innerHTML = '';
+  const defaultOption = document.createElement('option');
+  defaultOption.value = '';
+  defaultOption.textContent = 'Todas';
+  categoryFilter.appendChild(defaultOption);
+
+  categories.forEach((category) => {
+    const option = document.createElement('option');
+    option.value = category;
+    option.textContent = category;
+    categoryFilter.appendChild(option);
+  });
+
+  categoryFilter.value = selectedCategory;
 }
 
 // Exportar a Excel
@@ -203,5 +248,38 @@ function exportToExcel() {
   saveAs(new Blob([excelBuffer], { type: 'application/octet-stream' }), 'inventario.xlsx');
 }
 
+// Descargar la tabla como PDF
+function downloadAsPDF() {
+  const doc = new jsPDF();
+
+  // Configurar propiedades del PDF
+  const title = 'Inventario';
+  const columns = ['#', 'Producto', 'Cantidad', 'Precio', 'Categoría'];
+  const data = [];
+
+  // Obtener los datos de la tabla
+  const rows = inventoryTable.querySelectorAll('tbody tr');
+  rows.forEach((row, index) => {
+    const rowData = [];
+    rowData.push(index + 1); // Agregar número de fila
+    const cells = row.querySelectorAll('td');
+    cells.forEach((cell) => {
+      rowData.push(cell.textContent.trim()); // Agregar contenido de las celdas
+    });
+    data.push(rowData);
+  });
+
+  // Generar el PDF
+  doc.text(title, 10, 10);
+  doc.autoTable({
+    head: [columns],
+    body: data,
+  });
+
+  // Descargar el PDF
+  doc.save('inventario.pdf');
+}
+
 // Inicializar la generación de opciones de categoría
 populateCategoryOptions();
+populateCategoryFilter();
