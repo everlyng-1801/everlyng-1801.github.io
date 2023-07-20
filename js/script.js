@@ -9,7 +9,6 @@ const totalPrice = document.getElementById('total-price');
 const addCategoryBtn = document.getElementById('add-category-btn');
 const calculateBtn = document.getElementById('calculate-btn');
 const exportBtn = document.getElementById('export-btn');
-const downloadPdfBtn = document.getElementById('download-pdf-btn');
 
 // Opciones de categoría disponibles
 const categories = [];
@@ -165,11 +164,6 @@ exportBtn.addEventListener('click', () => {
   exportToExcel();
 });
 
-// Descargar la tabla como PDF
-downloadPdfBtn.addEventListener('click', () => {
-  downloadAsPDF();
-});
-
 // Actualizar los totales de cantidades y precios
 function updateTotals() {
   const rows = inventoryTable.querySelectorAll('tbody tr');
@@ -248,37 +242,7 @@ function exportToExcel() {
   saveAs(new Blob([excelBuffer], { type: 'application/octet-stream' }), 'inventario.xlsx');
 }
 
-// Descargar la tabla como PDF
-function downloadAsPDF() {
-  const doc = new jsPDF();
 
-  // Configurar propiedades del PDF
-  const title = 'Inventario';
-  const columns = ['#', 'Producto', 'Cantidad', 'Precio', 'Categoría'];
-  const data = [];
-
-  // Obtener los datos de la tabla
-  const rows = inventoryTable.querySelectorAll('tbody tr');
-  rows.forEach((row, index) => {
-    const rowData = [];
-    rowData.push(index + 1); // Agregar número de fila
-    const cells = row.querySelectorAll('td');
-    cells.forEach((cell) => {
-      rowData.push(cell.textContent.trim()); // Agregar contenido de las celdas
-    });
-    data.push(rowData);
-  });
-
-  // Generar el PDF
-  doc.text(title, 10, 10);
-  doc.autoTable({
-    head: [columns],
-    body: data,
-  });
-
-  // Descargar el PDF
-  doc.save('inventario.pdf');
-}
 
 // Inicializar la generación de opciones de categoría
 populateCategoryOptions();

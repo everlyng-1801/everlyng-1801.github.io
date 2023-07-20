@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Inventario Movil</h1>
+  </header>
+
+<!-- Bienvenida-->
+  <section> 
+    <div class="inventario-container">
+
+    <h1>Inventario</h1>
+
+    <div id="filters">
+      <label for="category-filter">Filtrar por categoría:</label>
+      <select id="category-filter">
+        <option value="">Todas</option>
+      </select>
+
+      <input type="text" id="add-category-input">
+      <button id="add-category-btn">Agregar categoría</button>
+    </div>
+    </br></br>
+    
+    
+    <button id="add-row-btn">Agregar fila</button>
+    <button id="add-column-btn">Agregar columna</button>
+    <button id="calculate-btn">Calcular</button>
+    <button id="export-btn">Exportar a Excel</button>
+  
+    </br></br>
+  
+    <div class="table-container"> <!-- Agregamos el div contenedor de la tabla -->
+      <table id="inventory-table">
+          <thead><tr>
+              <th></th>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+              <th>Categoría</th>
+              </tr></thead>
+          <tbody>
+              <!-- Aquí se generarán las filas dinámicamente -->
+          </tbody>
+          <tfoot><tr>
+              <th></th>
+              <th>Total</th>
+              <td id="total-quantity">0</td>
+              <td id="total-price">0</td>
+              <td></td>
+          </tr></tfoot>
+      </table>
+    </div>
+  
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 Mi Página Sencilla | PNF Informatica | Seccion 30121</p>
+    <p>Everlyng Colmenares   C.I.: 29702751</p>
+
+    <script src="script.js"></script>
+  </footer>
+</body>
+</html>

@@ -1,57 +1,131 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Inventario</title>
+  <title>Inventario Móvil</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
+
 <body>
-  <h1>Inventario</h1>
-  <div id="filters">
-    <label for="category-filter">Filtrar por categoría:</label>
-    <select id="category-filter">
-      <option value="">Todas</option>
-    </select></br>
-    <input type="text" id="add-category-input">
-    <button id="add-category-btn">Agregar categoría</button>
-  </div></br>
-  
-  
-  <button id="add-row-btn">Agregar fila</button>
-  <button id="add-column-btn">Agregar columna</button>
-  <button id="calculate-btn">Calcular</button>
-  <button id="export-btn">Exportar a Excel</button>
-  <button id="download-pdf-btn">Descargar como PDF</button>
+  <header>
+    <h1>Inventario Móvil</h1>
+  </header>
 
-  </br></br>
+<!-- Bienvenida-->
+  <section> 
+    <div class="container">
+      <div class="right">
+        <h2 class="subtitulo">¡Bienvenidos al Inventario Móvil!</h2>
+        <p>
+        En esta aplicación web, te brindamos una solución eficiente para administrar tu inventario              <br>
+        desde la comodidad de tu teléfono móvil. Ya seas un pequeño emprendedor, un vendedor                    <br>
+        ambulante o simplemente necesitas llevar un registro de tus pertenencias, ¡estás en el lugar indicado!  <br><br>
 
-<table id="inventory-table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Producto</th>
-        <th>Cantidad</th>
-        <th>Precio</th>
-        <th>Categoría</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Aquí se generarán las filas dinámicamente -->
-    </tbody>
-    <tfoot>
-      <tr>
-        <th></th>
-        <th>Total</th>
-        <td id="total-quantity">0</td>
-        <td id="total-price">0</td>
-        <td></td>
-      </tr>
-    </tfoot>
-  </table>
+        Aquí encontrarás un espacio dedicado a esta increíble banda de música pop latinoamericana que ha cautivado nuestros corazones.
+        
+      </p></div>
+      <div class="left">      
+        <img src="css/images/inventario.png" alt="Inventario" width="350" height="250">
+      </div>
 
-  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
-  <script src="https://unpkg.com/file-saver/dist/FileSaver.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.3/jspdf.umd.min.js"></script>
+    </div>
+  </section>
 
-  <script src="js/script.js"></script>
+<!-- Banner -->
+  <section> 
+    <div class="space"></div>
+
+        <div class="banner"><p>
+            Estamos emocionados de acompañarte en tu jornada de organización y control de inventario.     <br><br>
+            Queremos que esta aplicación sea la herramienta perfecta para simplificar tus tareas diarias. <br>
+        </p></div>
+    <div class="space"></div>
+
+  </section>
+
+<!-- FAQS SECTION -->
+  <section>
+    <div class="space"></div>
+    <h2 class="Facs-title">¿Qué te ofrece nuestra aplicación?</h2>
+    <!--<h4 class="Facs-sub-title">Descubre la Magia de su Música</h4>-->
+
+    <!-- Facilidad de Uso -->
+    <div class="container">
+      <div class="right-box2">      
+        <img src="css/images/Facilidad.png" alt="Facilidad.png" style="width: 4cm; height: 4cm;">
+      </div>
+
+      <div class="left-box2">
+        <span>Facilidad de Uso</span><p>
+            No importa si nunca has utilizado una aplicación de inventario antes.<br>
+            Nuestra interfaz amigable te guiará paso a paso en todas las funciones disponibles.
+        </p>
+      </div>
+    </div>
+
+    <!-- Acceso desde cualquier lugar -->
+    <div class="container">
+      <div class="right-box2">      
+        <img src="css/images/acceso.png" alt="acceso.png" style="width: 4cm; height: 4cm;">
+      </div>
+
+      <div class="left-box2">
+        <span>Acceso desde cualquier lugar</span><p>
+            La ventaja de un inventario móvil es que puedes llevarlo contigo a todas partes.<br>
+            Accede a tus datos en tiempo real desde cualquier dispositivo móvil con conexión a Internet.
+        </p>
+      </div>
+    </div>
+
+    <!-- Sincronización sin problemas -->
+    <div class="container">
+      <div class="right-box2">      
+        <img src="css/images/sincronizacion.png" alt="sincronizacion.png" style="width: 4cm; height: 4cm;">
+      </div>
+
+      <div class="left-box2">
+        <span>Sincronización sin problemas</span><p>
+            No te preocupes por perder datos.<br>
+            La aplicación se sincroniza de forma automática cuando tienes conexión a Internet, garantizando que tu inventario esté siempre actualizado.
+        </p>
+      </div>
+    </div>
+
+    <!-- Seguridad de tus datos -->
+    <div class="container">
+      <div class="right-box2">      
+        <img src="css/images/seguridad.png" alt="seguridad.png" style="width: 4cm; height: 4cm;">
+      </div>
+
+      <div class="left-box2">
+        <span>Seguridad de tus datos</span><p>
+            Entendemos lo importante que es la privacidad de tu información.<br>
+            Por eso, hemos implementado medidas de seguridad para proteger tus datos de manera confiable.
+        </p>
+      </div>
+    </div>
+
+    <!-- Almacenamiento Local -->
+    <div class="container">
+      <div class="right-box2">      
+        <img src="css/images/almacenamiento.png" alt="almacenamiento.png" style="width: 4cm; height: 4cm;">
+      </div>
+
+      <div class="left-box2">
+        <span>Almacenamiento Local</span><p>
+            Incluso en áreas con conectividad limitada, podrás trabajar con tranquilidad.<br>
+            Los cambios realizados sin conexión se sincronizarán automáticamente una vez que recuperes la señal.
+        </p>
+      </div>
+    </div>
+    <!-- Barra de espacio -->
+            <div class="space"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 Mi Página Sencilla | PNF Informatica | Seccion 30121</p>
+    <p>Everlyng Colmenares   C.I.: 29702751</p>
+
+    <script src="script.js"></script>
+  </footer>
 </body>
 </html>
