@@ -9,8 +9,10 @@ body {
 header {
   background-color: #070f17;
   color: #fff;
-  padding: 15px;
+  width: 100%;
+  padding: 20px;
   text-align: center;
+  
 }
 
 nav {
@@ -153,55 +155,21 @@ span {
   font-weight: bold; 
 }
 
-footer {
+footer {  
   background-color: #070f17;
   color: #fff;
+  width: 100%;
   padding: 20px;
-  text-align: center;
   margin-top: 60px;
+  text-align: center;
   clear: both;
 }
-
-/* Media queries para hacer la página responsive */
-@media screen and (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .left,
-  .right {
-    max-width: 100%;
-    float: none;
-  }
-
-  .left img,
-  .right img,
-  .left-box2 img,
-  .right-box2 img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-
-  .left-box2,
-  .right-box2 {
-    max-width: 100%;
-    float: none;
-  }
-
-  /* Ajustes para el footer en dispositivos pequeños */
-  footer {
-    margin-bottom: 0;
-  }
-
-  /* Ajustes para el contenido del inventario en dispositivos pequeños */
-  section {
-    padding: 0 10px;
-  }
+.mi-web{  
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
 }
 
 /* Tabla inventario */
-
 .inventario-container {
   flex-direction: column;
   align-items: center;
@@ -221,4 +189,71 @@ footer {
     width: 100%;
   }
 }
+/* Estilo para la columna que contiene el botón de eliminar */
+.delete-column td:nth-child(1) {
+  border: none;
+  padding:0px ;
+  background-color: #fff;
+}
 
+.space-footer {
+  margin-bottom: 62%;
+}
+
+/* Estilo para el select "category-filter" */
+#category-filter {
+  padding: 8px 20px;
+  border: 1px solid #3096b5;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* Estilo para el input "add-category-input" */
+#add-category-input {
+  padding: 8px 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  margin-right: 10px;
+}
+
+
+#add-category-btn{
+  background-color: #3096b5;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+    
+#add-row-btn{
+  background-color: #3096b5;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#add-column-btn{
+  background-color: #3096b5;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+  
+#calculate-btn{
+  background-color: #3096b5;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#export-btn{
+  background-color: #3096b5;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}

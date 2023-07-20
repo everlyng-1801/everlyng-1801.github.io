@@ -14,6 +14,7 @@ const exportBtn = document.getElementById('export-btn');
 const categories = [];
 
 // Agregar fila al hacer clic en el botón "Agregar fila"
+// Agregar fila al hacer clic en el botón "Agregar fila"
 addRowBtn.addEventListener('click', () => {
   const newRow = document.createElement('tr');
   const columnCount = inventoryTable.rows[0].cells.length;
@@ -21,7 +22,7 @@ addRowBtn.addEventListener('click', () => {
   for (let i = 0; i < columnCount; i++) {
     const newCell = document.createElement('td');
     if (i === 0) {
-      newCell.innerHTML = `<button class="delete-row-btn">Eliminar</button>`;
+      newCell.innerHTML = `<button class="delete-row-btn">X</button>`;
     } else if (i === 4) {
       newCell.innerHTML = `
         <select class="category-select">
@@ -36,16 +37,22 @@ addRowBtn.addEventListener('click', () => {
     newRow.appendChild(newCell);
   }
 
+  // Agregar la clase delete-column a todas las celdas de la columna que contiene el botón de eliminar
+  newRow.classList.add('delete-column');
+
   inventoryTable.querySelector('tbody').appendChild(newRow);
-  updateTotals();
-  populateCategoryOptions();
 
   const deleteRowBtn = newRow.querySelector('.delete-row-btn');
   deleteRowBtn.addEventListener('click', () => {
     newRow.remove();
     updateTotals();
   });
+
+  updateTotals();
+  populateCategoryOptions();
 });
+
+
 
 // Agregar columna al hacer clic en el botón "Agregar columna"
 addColumnBtn.addEventListener('click', () => {

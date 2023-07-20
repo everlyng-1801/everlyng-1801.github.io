@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inventario</title>
+
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="icon" href="css/images/web.ico" type="image/x-icon">
 </head>
 
 <body>
-  <header>
-    <h1>Inventario Movil</h1>
-  </header>
+  <header><h1>Inventario Movil</h1></header>
 
 <!-- Bienvenida-->
   <section> 
-    <div class="inventario-container">
+    <div class="inventario-container">  
 
     <h1>Inventario</h1>
 
@@ -24,8 +23,8 @@
       </select>
 
       <input type="text" id="add-category-input">
-      <button id="add-category-btn">Agregar categoría</button>
     </div>
+    <button id="add-category-btn">Agregar categoría</button>
     </br></br>
     
     
@@ -39,7 +38,7 @@
     <div class="table-container"> <!-- Agregamos el div contenedor de la tabla -->
       <table id="inventory-table">
           <thead><tr>
-              <th></th>
+              <th style="border: none; color: rgb(255, 255, 255);">X</th>
               <th>Producto</th>
               <th>Cantidad</th>
               <th>Precio</th>
@@ -49,23 +48,28 @@
               <!-- Aquí se generarán las filas dinámicamente -->
           </tbody>
           <tfoot><tr>
-              <th></th>
-              <th>Total</th>
-              <td id="total-quantity">0</td>
-              <td id="total-price">0</td>
-              <td></td>
+              <th style="border: none;"></th>
+              <th style="border: none;">Total</th>
+              <td style="border: none;" id="total-quantity">0</td>
+              <td style="border: none;" id="total-price">0</td>
+              <td style="border: none;"></td>
           </tr></tfoot>
       </table>
     </div>
   
     </div>
+    <!-- Barra de espacio -->
+            <div class="space-footer"></div>
   </section>
 
   <footer>
     <p>&copy; 2023 Mi Página Sencilla | PNF Informatica | Seccion 30121</p>
     <p>Everlyng Colmenares   C.I.: 29702751</p>
-
-    <script src="script.js"></script>
-  </footer>
+  </footer>  
+  <!-- Scripts -->
+    <script src="C:\Users\kaizen\Desktop\everlyng-1801.github.io\js\script.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://unpkg.com/file-saver/dist/FileSaver.min.js"></script>
+  
 </body>
 </html>
