@@ -40,6 +40,7 @@ nav ul li a {
 table {
   width: 100%;
   border-collapse: collapse;
+  border-radius: 4px;
 }
 
 th, td {
@@ -212,48 +213,58 @@ footer {
 #add-category-input {
   padding: 8px 20px;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  outline: none;
+  border-radius: 8px;
   margin-right: 10px;
+  outline: none;
 }
 
 
 #add-category-btn{
   background-color: #3096b5;
-  color: white;
-  border: none;
+  border-radius: 4px;
   padding: 5px 10px;
+  padding: 8px 20px;
+  color: white;
   cursor: pointer;
+  border: none;
 }
     
 #add-row-btn{
   background-color: #3096b5;
-  color: white;
-  border: none;
+  border-radius: 4px;
   padding: 5px 10px;
+  padding: 8px 20px;
+  color: white;
   cursor: pointer;
+  border: none;
 }
 
 #add-column-btn{
   background-color: #3096b5;
-  color: white;
-  border: none;
+  border-radius: 4px;
   padding: 5px 10px;
+  padding: 8px 20px;
+  color: white;
   cursor: pointer;
+  border: none;
 }
   
 #calculate-btn{
   background-color: #3096b5;
-  color: white;
-  border: none;
+  border-radius: 4px;
   padding: 5px 10px;
+  padding: 8px 20px;
+  color: white;
   cursor: pointer;
+  border: none;
 }
 
 #export-btn{
   background-color: #3096b5;
-  color: white;
-  border: none;
+  border-radius: 4px;
   padding: 5px 10px;
+  padding: 8px 20px;
+  color: white;
   cursor: pointer;
+  border: none;
 }
