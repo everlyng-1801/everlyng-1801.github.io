@@ -33,6 +33,12 @@ header {
   border-radius: 5px;
 }
 
+.inventory-table {
+  margin: 10%;
+  padding: 10%;
+  overflow-x: hidden;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -46,15 +52,27 @@ th, td {
 
 button {
   margin-top: 20px;
-}
-.delete-row-btn {
-  background-color: #f44336;
+  background-color: #3096b5;
+  border-radius: 4px;
+  padding: 5px 20px;
   color: white;
-  border: none;
-  padding: 5px 10px;
   cursor: pointer;
+  border: none;
 }
- 
+
+.delete-row-btn, .delete-column-btn {
+  background-color: #f44336;
+}
+
+.delete-row-btn, .delete-column-btn, #add-row-btn, #add-column-btn, #calculate-btn, #export-btn {
+  margin-top: 20px;
+  border-radius: 4px;
+  padding: 5px 20px;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
 .container {
   align-content: center;
   margin: inherit;
@@ -64,7 +82,7 @@ button {
   overflow: hidden;
 }
 
-.left {
+.left, .right, .left-box2, .right-box2 {
   float: right;
   width: 100%;
   max-width: 30%;
@@ -72,10 +90,7 @@ button {
   overflow: hidden;
 }
 
-.left img,
-.right img,
-.left-box2 img,
-.right-box2 img {
+.left img, .right img, .left-box2 img, .right-box2 img {
   max-width: 100%;
   height: auto;
   object-fit: cover;
@@ -85,36 +100,6 @@ button {
   font-family: 'Montserrat', sans-serif;
   font-size: 45px;
   font-weight: 800;
-}
-
-.right {
-  float: right;
-  width: 100%;
-  padding: 4px;
-  max-width: 40%;
-  height: auto;
-  overflow: hidden;
-}
-
-.left-box2 {
-  float: right;
-  width: 100%;
-  max-width: 40%;
-  height: auto;
-  overflow: hidden;
-  padding: 20px;
-}
-
-.right-box2 {
-  float: right;
-  width: 100%;
-  max-width: 30%;
-  height: auto;
-  overflow: hidden;
-}
-
-.space {
-  margin-bottom: 60px;
 }
 
 .banner {
@@ -161,10 +146,6 @@ footer {
   text-align: center;
   clear: both;
 }
-.mi-web{  
-  font-family: 'Montserrat', sans-serif;
-  font-size: 10px;
-}
 
 /* Tabla inventario */
 .inventario-container {
@@ -186,6 +167,7 @@ footer {
     width: 100%;
   }
 }
+
 /* Estilo para la columna que contiene el botón de eliminar */
 .delete-column td:nth-child(1) {
   border: none;
@@ -195,6 +177,13 @@ footer {
 
 .space-footer {
   margin-bottom: 62%;
+}
+
+
+.category {
+  flex-direction: column;
+  align-items: center;
+  margin: 2cm;
 }
 
 /* Estilo para el select "category-filter" */
@@ -214,53 +203,25 @@ footer {
   outline: none;
 }
 
-
-#add-category-btn{
-  background-color: #3096b5;
-  border-radius: 4px;
+.category-item {
+  display: inline-block;
   padding: 5px 10px;
-  padding: 8px 20px;
-  color: white;
-  cursor: pointer;
-  border: none;
-}
-    
-#add-row-btn{
-  background-color: #3096b5;
-  border-radius: 4px;
-  padding: 5px 10px;
-  padding: 8px 20px;
-  color: white;
-  cursor: pointer;
-  border: none;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background-color: #f0f0f0; /* Color de fondo */
+  border-radius: 5px;
 }
 
-#add-column-btn{
-  background-color: #3096b5;
-  border-radius: 4px;
-  padding: 5px 10px;
-  padding: 8px 20px;
-  color: white;
-  cursor: pointer;
-  border: none;
-}
-  
-#calculate-btn{
-  background-color: #3096b5;
-  border-radius: 4px;
-  padding: 5px 10px;
-  padding: 8px 20px;
-  color: white;
-  cursor: pointer;
-  border: none;
+.category-item span {
+  background-color: #ffc107; /* Color de fondo para la palabra de la categoría */
+  padding: 2px 5px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 14px;
+  font-weight: 100;
 }
 
-#export-btn{
-  background-color: #3096b5;
-  border-radius: 4px;
-  padding: 5px 10px;
-  padding: 8px 20px;
-  color: white;
-  cursor: pointer;
-  border: none;
+#add-category-btn {
+  background-color: #4830b5;
 }

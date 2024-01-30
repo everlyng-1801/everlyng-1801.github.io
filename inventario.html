@@ -1,82 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inventario</title>
-
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="icon" href="css/images/web.ico" type="image/x-icon">
-</head>
+  <style>
+    .category-item {
+      display: inline-block;
+      padding: 5px 10px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      background-color: #f0f0f0; /* Color de fondo */
+      border-radius: 5px;
+    }
 
+    .category-item span {
+      background-color: #ffc107; /* Color de fondo para la palabra de la categoría */
+      padding: 2px 5px;
+      border-radius: 3px;
+      display: inline-block;
+      margin-right: 5px;
+    }
+  </style>
+</head>
 <body>
   <header>
     <h1>Inventario</h1>
     <nav class="menu">
-      <a href="index.html" target="_blank">Incio</a>
-      <a href="inventario.html" target="_blank">Inventario</a>
-      <!-- Agrega más enlaces aquí si es necesario -->
+      <a href="index.html" target="_blank">Inicio</a>
+      <a href="inventario.html" target="_self">Inventario</a>
     </nav>
   </header>
 
-<!-- Bienvenida-->
+  <!-- Categorías -->
+  <div class="inventario-container"> 
+  <div id="category">
+    <h2>Categorías</h2>
+    <form id="add-category-form">
+      <input type="text" id="add-category-input" placeholder="Nombre de categoría" required>
+      <button type="submit">Agregar categoría</button>
+    </form>
+  </div>
+  <div id="category-container"></div>
+</div>
+
+  <!-- Bienvenida-->
   <section> 
     <div class="inventario-container">  
+      <br><br>
+      <button id="add-row-btn">    Agregar fila</button>
+      <button id="add-column-btn"> Agregar columna</button>
+      <button id="calculate-btn">  Calcular</button>
+      <button id="export-btn">     Exportar a Excel</button>
+      <br><br>
 
-    <h1>Inventario</h1>
-
-    <div id="filters">
-      <label for="category-filter">Filtrar por categoría:</label>
-      <select id="category-filter">
-        <option value="">Todas</option>
-      </select>
-
-      <input type="text" id="add-category-input">
-      <button id="add-category-btn">Agregar categoría</button>
-    </div>
-    </br></br>
-    
-    
-    <button id="add-row-btn">Agregar fila</button>
-    <button id="add-column-btn">Agregar columna</button>
-    <button id="calculate-btn">Calcular</button>
-    <button id="export-btn">Exportar a Excel</button>
-  
-    </br></br>
-  
-    <div class="table-container"> <!-- Agregamos el div contenedor de la tabla -->
-      <table id="inventory-table">
-          <thead><tr>
-              <th style="border: none; color: rgb(255, 255, 255);">X</th>
+      <div class="table-container">
+        <table id="inventory-table">
+          <thead>
+            <tr>
+              <th style="border: none; color: rgb(255, 255, 255);">x</th>
               <th>Producto</th>
               <th>Cantidad</th>
               <th>Precio</th>
               <th>Categoría</th>
-              </tr></thead>
+            </tr>
+          </thead>
           <tbody>
-              <!-- Aquí se generarán las filas dinámicamente -->
+            <!-- Aquí se generarán las filas dinámicamente -->
           </tbody>
-          <tfoot><tr>
+          <tfoot>
+            <tr>
               <th style="border: none;"></th>
               <th style="border: none;">Total</th>
               <td style="border: none;" id="total-quantity">0</td>
               <td style="border: none;" id="total-price">0</td>
               <td style="border: none;"></td>
-          </tr></tfoot>
-      </table>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     </div>
-  
-    </div>
-    <!-- Barra de espacio -->
-            <div class="space-footer"></div>
+    <div class="space-footer"></div>
   </section>
 
   <footer>
-    <p>&copy; 2023 Mi Página Sencilla | PNF Informatica | Seccion 30121</p>
+    <p>&copy; 2024 Mi Página Sencilla | PNF Informática | Sección 30122</p>
     <p>Everlyng Colmenares   C.I.: 29702751</p>
-  </footer>  
+  </footer>
+
   <!-- Scripts -->
-    <script src="js/script.js"></script>
-    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
-    <script src="https://unpkg.com/file-saver/dist/FileSaver.min.js"></script>
-  
+  <script src="js/inventoryOptions.js"></script>
+  <script src="js/categoryOptions.js"></script>
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="https://unpkg.com/file-saver/dist/FileSaver.min.js"></script>
 </body>
 </html>
